@@ -6,8 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background-color: var(--tertiary);
 }
 
 .bet {
@@ -68,4 +66,33 @@
     font-size: 38px;
 
     background-color: var(--quaternary);
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bet {
+        width: 100%;
+        height: auto;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    
+        margin-bottom: 24px;
+    }
+
+    .number {
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
 }
