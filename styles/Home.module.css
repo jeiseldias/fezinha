@@ -8,15 +8,43 @@
     align-items: center;
 }
 
+.answer {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 40px;
+    
+    font-family: Lexend;
+    font-size: 20px;
+
+    background-color: var(--quaternary);
+}
+
+.answer:active {
+    background-color: var(--quaternary);
+    cursor: pointer;
+}
+
+.answer:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
 .bet {
     width: 600px;
-    height: 90px;
+    height: auto;
 
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 
     margin-bottom: 24px;
+    gap:10px;
 }
 
 .button {
@@ -68,6 +96,33 @@
     background-color: var(--quaternary);
 }
 
+.question {
+    width: 600px;
+    height: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 24px;
+    gap:30px;
+}
+
+.questionAnswer {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 24px;
+
+    gap:10px;
+}
+
 @media screen and (max-width: 600px) {
     .container {
         width: 100%;
@@ -94,5 +149,15 @@
     .number {
         margin-right: 8px;
         margin-bottom: 8px;
+    }
+
+    .question {
+        width: 90%;
+        margin-bottom: 48px;
+    }
+
+    .questionAnswer {
+        width: 100%;
+        flex-wrap: wrap;
     }
 }

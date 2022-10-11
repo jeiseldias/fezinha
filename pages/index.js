@@ -3,19 +3,17 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-    const [bet,setBet] = useState([0,0,0,0,0,0]);
+    const [size, setSize] = useState(0);
+    let picked = [];
 
-    useEffect(() => {
-        createBet();
-    }, []);
+    if(size !== 0) createBet()
     
     function createBet() {
         const min = Math.ceil(1);
         const max = Math.floor(60);
-        let picked = [];
         let number = 0;
 
-        for( var i = 0; i < 6; i++) {
+        for( var i = 0; i < size; i++) {
             number = Math.floor(Math.random() * (max - min + 1)) + min
             
             if( !picked.includes(number) ) {
@@ -26,7 +24,51 @@ export default function Home() {
         }
 
         picked.sort(function(a, b){return a - b});
-        setBet(picked);
+    }
+
+    function handleAnswer(newSize) {
+        setSize(newSize)
+    }
+
+    function newBet() {
+        setSize(0)
+    }
+
+    function showBet() {
+        const bet = picked.map((number) => <div key={`bet-${number}`} className={styles.number}>{number}</div>)
+        
+        return(
+            <>
+                <div className={styles.bet}>
+                    {bet}
+                </div>
+
+                <div className={styles.button}>
+                    <button onClick={newBet}>Gerar nova aposta</button>
+                </div>
+            </>
+        )
+    }
+
+    function showQuestion() {
+        return (
+            <div className={styles.question}>
+                    <div className={styles.title}>Deseja gerar um jogo com quantas dezenas?</div>
+                    
+                    <div className={styles.questionAnswer}>
+                        <div className={styles.answer} onClick={() => handleAnswer(6)}>06</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(7)}>07</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(8)}>08</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(9)}>09</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(10)}>10</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(11)}>11</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(12)}>12</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(13)}>13</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(14)}>14</div>
+                        <div className={styles.answer} onClick={() => handleAnswer(15)}>15</div>
+                    </div>
+                </div>
+        )
     }
 
     return (
@@ -37,18 +79,7 @@ export default function Home() {
                 <title>Fezinha</title>
             </Head>
 
-            <div className={styles.bet}>
-                <div className={styles.number}>{bet[0].toString().padStart(2, "0")}</div>
-                <div className={styles.number}>{bet[1].toString().padStart(2, "0")}</div>
-                <div className={styles.number}>{bet[2].toString().padStart(2, "0")}</div>
-                <div className={styles.number}>{bet[3].toString().padStart(2, "0")}</div>
-                <div className={styles.number}>{bet[4].toString().padStart(2, "0")}</div>
-                <div className={styles.number}>{bet[5].toString().padStart(2, "0")}</div>
-            </div>
-
-            <div className={styles.button}>
-                <button onClick={createBet}>Gerar nova aposta</button>
-            </div>
+            {size === 0 ? showQuestion() : showBet()}
         </div>
     )
 }
