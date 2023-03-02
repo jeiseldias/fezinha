@@ -4,14 +4,22 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
     const [size, setSize] = useState(0);
+    const [numbers, setNumbers] = useState([]);
     let picked = [];
 
-    if(size !== 0) createBet()
+    useEffect(() => {
+        console.log(numbers)
+    }, [numbers])
+
+    useEffect(() => {
+        if(size !== 0) createBet()
+    }, [size])
     
     function createBet() {
         const min = Math.ceil(1);
         const max = Math.floor(60);
         let number = 0;
+        picked = []
 
         for( var i = 0; i < size; i++) {
             number = Math.floor(Math.random() * (max - min + 1)) + min
@@ -24,6 +32,7 @@ export default function Home() {
         }
 
         picked.sort(function(a, b){return a - b});
+        setNumbers(picked)
     }
 
     function handleAnswer(newSize) {
@@ -35,7 +44,7 @@ export default function Home() {
     }
 
     function showBet() {
-        const bet = picked.map((number) => <div key={`bet-${number}`} className={styles.number}>{number}</div>)
+        const bet = numbers.map((number) => <div key={`bet-${number}`} className={styles.number}>{number}</div>)
         
         return(
             <>
@@ -44,7 +53,8 @@ export default function Home() {
                 </div>
 
                 <div className={styles.button}>
-                    <button onClick={newBet}>Gerar nova aposta</button>
+                    <button onClick={newBet}>Voltar</button>
+                    <button onClick={() => createBet()}>Gerar nova aposta</button>
                 </div>
             </>
         )
