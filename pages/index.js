@@ -56,6 +56,9 @@ export default function Home() {
                     <button onClick={newBet}>Voltar</button>
                     <button onClick={() => createBet()}>Gerar nova aposta</button>
                 </div>
+                <div className={styles.questionFooter}>
+                    <a target='blank' href='https://link.mercadopago.com.br/fezinhadamega'>Colabore com este projeto</a>
+                </div>
             </>
         )
     }
@@ -63,21 +66,25 @@ export default function Home() {
     function showQuestion() {
         return (
             <div className={styles.question}>
-                    <div className={styles.title}>Deseja gerar um jogo com quantas dezenas?</div>
-                    
-                    <div className={styles.questionAnswer}>
-                        <div className={styles.answer} onClick={() => handleAnswer(6)}>06</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(7)}>07</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(8)}>08</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(9)}>09</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(10)}>10</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(11)}>11</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(12)}>12</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(13)}>13</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(14)}>14</div>
-                        <div className={styles.answer} onClick={() => handleAnswer(15)}>15</div>
-                    </div>
+                <div className={styles.title}>Deseja gerar um jogo com quantas dezenas?</div>
+                
+                <div className={styles.questionAnswer}>
+                    <div className={styles.answer} onClick={() => handleAnswer(6)}>06</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(7)}>07</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(8)}>08</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(9)}>09</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(10)}>10</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(11)}>11</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(12)}>12</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(13)}>13</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(14)}>14</div>
+                    <div className={styles.answer} onClick={() => handleAnswer(15)}>15</div>
                 </div>
+
+                <div className={styles.questionFooter}>
+                    <a target='blank' href='https://link.mercadopago.com.br/fezinhadamega'>Colabore com este projeto</a>
+                </div>
+            </div>
         )
     }
 
